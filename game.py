@@ -3,6 +3,27 @@ from hero import Hero
 
 ARENA_NAME = "ASCTE"
 
+def battle(hero: Hero, enemy: Goblin):
+    while hero.is_alive() and enemy.is_alive():
+          hero_damage = hero.attack()
+          enemy.take_damage(hero_damage, hero)
+
+          if hero.crit_hit:
+               print("Critical Hit!")
+        
+          if enemy.is_alive():
+               enemy_damage = enemy.attack()
+               hero.take_damage(enemy_damage, enemy)
+            
+          if enemy.crit_hit:
+               print("Critical Hit!")  
+
+    if hero.is_alive():
+        print(f"{hero.name} the {hero.hero_class} wins!")
+    else:
+         print(f"{enemy.name} wins!")
+
+     
 
 def main():
     """Open the arena and introduce its first opponent."""
@@ -20,17 +41,13 @@ def main():
 
     print("A hero has answered the call!")
 
-    hero = Hero("Sentinal", 135, 20, "Knight")
+    hero = Hero("Sentinal", 135, 20, "Knight", True)
 
     print(f"{hero.name} the {hero.hero_class} enters the arena with {hero.health} health.")
 
     print("The battle begins...")
 
-    heroAttack = hero.attack()
-    goblin.take_damage(heroAttack, hero)
-
-    if hero.crit_hit:
-            print("Critical Hit!")
+    battle(hero, goblin)
 
 
 

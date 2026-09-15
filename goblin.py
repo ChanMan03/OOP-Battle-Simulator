@@ -13,6 +13,14 @@ class Goblin:
 
     def attack(self):
         """Return a random amount of damage."""
+        crit_percent =  random.randint(1, 100)
+        
+        if crit_percent <= 5:
+            self.crit_hit = True
+            return (random.randint(1, self.attack_power) + random.randint(1, 100))
+        else:
+            self.crit_hit = False
+
         return random.randint(1, self.attack_power)
 
     def take_damage(self, damage, hero):
