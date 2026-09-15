@@ -10,22 +10,27 @@ def main():
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
     print("The gates are opening...")
 
-    goblin = Goblin("Scribble")
+    goblin = Goblin("Scribble", False)
 
     print(f"{goblin.name} enters the arena with {goblin.health} health.")
 
-    goblinTwo = Goblin("Gribble")
+    goblinTwo = Goblin("Gribble", True)
 
     print(f"{goblinTwo.name} enters the arena with {goblin.health} health.")
 
-    print("But no hero has answered the call... yet.")
+    print("A hero has answered the call!")
 
-    hero = Hero("Sentinal", 125, 17.5)
+    hero = Hero("Sentinal", 135, 20, "Knight")
 
-    print(f"{hero.name} enters the arena with {hero.health} health.")
+    print(f"{hero.name} the {hero.hero_class} enters the arena with {hero.health} health.")
+
+    print("The battle begins...")
 
     heroAttack = hero.attack()
-    goblin.take_damage(heroAttack)
+    goblin.take_damage(heroAttack, hero)
+
+    if hero.crit_hit:
+            print("Critical Hit!")
 
 
 
